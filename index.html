@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rajesh — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#f1ece6;--bg-alt:#e7dfd7;--ink:#2c2a29;--accent:#b69b72;--accent-deep:#8e6d3d;
+      --olive:#6f775c;--cocoa:#5a4032;--card:#fff;--muted:#8d847a;
+      --shadow:0 10px 30px rgba(36,30,20,.15);--radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth; scroll-padding-top:80px;}
+    body{margin:0;color:var(--ink);background:var(--bg);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+    .wrap{max-width:1200px;margin-inline:auto;padding:clamp(16px,3vw,28px)}
+    .grid{display:grid;gap:clamp(16px,2.4vw,28px)}
+    .btn{display:inline-block;padding:14px 22px;border-radius:999px;text-decoration:none;font-weight:600;letter-spacing:.3px;background:var(--ink);color:#fff;box-shadow:var(--shadow);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(36,30,20,.22);background:#111}
+    .tag{display:inline-block;padding:.25rem .6rem;border-radius:999px;border:1px solid #00000022;font-size:.78rem;color:var(--muted)}
+    header{position:sticky;top:0;z-index:40;backdrop-filter:saturate(140%) blur(8px);background:linear-gradient(180deg,rgba(241,236,230,.92),rgba(241,236,230,.6));border-bottom:1px solid #0000000e}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:'Playfair Display',serif;letter-spacing:.15em;font-weight:700}
+    .brand small{font-family:'Great Vibes',cursive;font-weight:400;letter-spacing:0;color:var(--accent-deep);font-size:1.15rem;margin-left:.35rem}
+    nav a{color:var(--ink);text-decoration:none;margin-left:clamp(10px,2vw,22px);font-weight:500}
+    nav a:hover{color:var(--accent-deep)}
+    .hero{display:grid;align-items:center;grid-template-columns:1.1fr .9fr;gap:clamp(20px,4vw,40px);padding-top:clamp(32px,8vw,88px);padding-bottom:clamp(32px,8vw,88px)}
+    .title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(40px,7vw,88px);letter-spacing:.06em}
+    .title em{font-family:'Great Vibes',cursive;font-weight:400;color:var(--accent-deep);font-size:.8em;letter-spacing:0}
+    .sub{color:var(--olive);letter-spacing:.32em;text-transform:uppercase;font-size:.85rem;margin-top:.5rem}
+    .hero p{max-width:58ch;font-size:1.05rem}
+    .hero-visual{position:relative;min-height:300px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    section{padding:clamp(34px,7.5vw,120px) 0}
+    .section-title{font-family:'Playfair Display',serif;letter-spacing:.28em;text-transform:uppercase;font-weight:600;color:#1f1d1c;display:flex;align-items:center;gap:16px}
+    .section-title:after{content:"";height:1px;flex:1;background:#00000022}
+    .about{grid-template-columns:.9fr 1.1fr}
+    .about .photo{
+      border-radius:50%;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:340px;
+      aspect-ratio:1/1;
+      width:340px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#fff;
+    }
+    .about .photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:50%;
+      display:block;
+    }
+    .projects{grid-template-columns:repeat(12,1fr)}
+    .card{grid-column:span 6;background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .card header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;background:linear-gradient(180deg,#ffffff,#fbf9f7);border-bottom:1px solid #0000000a;position:relative}
+    .card header .title-small{font-family:'Playfair Display',serif;letter-spacing:.3em;text-transform:uppercase;font-size:.95rem}
+    .card .media{aspect-ratio:16/10;background:#ddd;overflow:hidden}
+    .card .media img{width:100%;height:100%;object-fit:cover}
+    .card .body{padding:18px 22px 24px}
+    .card .body p{color:#5a5249}
+    .card--wide{grid-column:span 12}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,28px);background:linear-gradient(180deg,var(--bg-alt),var(--bg));border:1px solid #0000000d;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .contact .pane{padding:clamp(20px,3.5vw,42px)}
+    .callout{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,56px);letter-spacing:.08em}
+    .script{font-family:'Great Vibes',cursive;font-size:1.2em;color:var(--accent-deep)}
+    .contact .visual{overflow:hidden;min-height:320px}
+    .contact .visual img{width:100%;height:100%;object-fit:cover}
+    footer{padding:40px 0;color:#6b6258;font-size:.92rem}
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .projects .card{grid-column:span 12}
+      .contact{grid-template-columns:1fr}
+      .about .photo{width:220px;min-height:220px;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">RAJESH <small>Portfolio</small></div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Hero Section -->
+  <section class="wrap hero" id="home">
+    <div>
+      <div class="sub">Web Developer · Portfolio</div>
+      <h1 class="title">RAJESH — <em>Web Developer</em></h1>
+      <p>I am Rajesh, a passionate web developer with expertise in building modern and user-friendly websites.</p>
+      <a class="btn" href="#contact">Work With Me</a>
+    </div>
+    <div class="hero-visual">
+      <img src="hero.jpeg" 
+           alt="Web Development Hero Image" 
+           style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </section>
+  <!-- About Section -->
+  <section id="about">
+    <div class="wrap grid about">
+      <div class="photo">
+        <img src="WhatsApp Image 2025-08-12 at 21.00.32_d7b254b2.jpg" 
+             alt="Rajesh Profile Picture">
+      </div>
+      <div>
+        <h2 class="section-title">Hi I’m Rajesh</h2>
+        <p>A web developer skilled in designing and building responsive websites and applications. Always eager to learn new technologies and improve my craft.</p>
+      </div>
+    </div>
+  </section>
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="wrap">
+      <h2 class="section-title">My Skills</h2>
+      <div class="grid projects" style="margin-top:18px">
+        <article class="card">
+          <header><span class="title-small">DaVinci Resolve</span></header>
+          <div class="media">
+            <img src="edit.jpg" alt="Video editing">
+          </div>
+          <div class="body"><p>Video editing and color grading expertise.</p></div>
+        </article>
+        <article class="card">
+          <header><span class="title-small">C & C++</span></header>
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" alt="Programming">
+          </div>
+          <div class="body"><p>Strong foundation in systems programming and problem solving.</p></div>
+        </article>
+        <article class="card">
+          <header><span class="title-small">Python</span></header>
+          <div class="media">
+            <img src="python.jpg" alt="Python coding">
+          </div>
+          <div class="body"><p>Experience with scripting, automation, and web development.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="wrap contact">
+      <div class="pane">
+        <div class="callout">Let’s <span class="script">Collaborate</span></div>
+        <p>Ready to start a project together? Send me a message and I’ll reply soon.</p>
+        <div class="grid" style="grid-template-columns:1fr 1fr; gap:16px; margin-top:10px">
+          <div>
+            <div class="tag" style="display:block;margin-bottom:6px">Phone</div>
+            <a href="tel:+91123456789" style="text-decoration:none;color:inherit">+91 123456789</a>
+          </div>
+          <div>
+            <div class="tag" style="display:block;margin-bottom:6px">Email</div>
+            <a href="mailto:rajesh2007demonlord@gmail.com" style="text-decoration:none;color:inherit">rajesh2007demonlord@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="visual">
+        <img src="https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?q=80&w=1400&auto=format&fit=crop" alt="Contact visual">
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="wrap">© <span id="year"></span> Rajesh. Crafted with care.</div>
+  </footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
